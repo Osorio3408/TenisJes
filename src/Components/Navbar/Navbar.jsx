@@ -14,7 +14,7 @@ export const Navbar = () => {
       <div className="container mx-auto px-4 md:px-8">
         <div className="flex items-center justify-between">
           <div>
-            <Link to="/" className="text-white font-bold text-5xl flex gap-x-2">
+            <Link to="/" className="text-white font-bold text-5xl flex">
               TENIS <p className="text-red-600 font-extrabold">JES</p>
             </Link>
           </div>
@@ -34,6 +34,11 @@ export const Navbar = () => {
                 to="/products/busos"
                 className="block text-white text-xl hover:text-gray-300">
                 Busos
+              </Link>
+              <Link
+                to="/products/busos"
+                className="block text-white text-xl hover:text-gray-300">
+                Chaquetas
               </Link>
               <Link
                 to="/products/busos"
@@ -83,6 +88,11 @@ export const Navbar = () => {
               to="/products/busos"
               className="block text-white hover:text-gray-300">
               Busos
+            </Link>
+            <Link
+              to="/products/busos"
+              className="block text-white hover:text-gray-300">
+              Chaquetas
             </Link>
             <Link
               to="/products/busos"
