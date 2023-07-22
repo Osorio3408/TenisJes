@@ -19,7 +19,7 @@ export const Home = () => {
       logo: "/new-balance-logo.webp",
     },
     {
-      name: "Ilimin",
+      name: "Ilmin",
       logo: "/ilimin-logo.webp",
     },
   ];
