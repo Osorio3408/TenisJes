@@ -115,9 +115,9 @@ export const Home = () => {
               distribuidores autorizados de Monastery, Diesel, New Balance e
               Ilimin. Tenemos todo lo que necesitas para lucir a la moda y estar
               cómodo a la vez. Desde tenis deportivos hasta camisetas, jeans,
-              busos, gorras, lociones, sacos, bolsos y relojes, ¡lo tenemos
-              todo! Visita nuestra tienda en <strong>Manizales</strong> y
-              descubre nuestros productos destacados. ¡Te esperamos!
+              busos, gorras, lociones, bolsos y relojes, ¡lo tenemos todo!
+              Visita nuestra tienda en <strong>Manizales</strong> y descubre
+              nuestros productos destacados. ¡Te esperamos!
             </p>
             <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-8 place-content-center w-full">
               {brands.map((brand) => (
