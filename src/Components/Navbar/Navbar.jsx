@@ -90,27 +90,27 @@ export const Navbar = () => {
               Busos
             </Link>
             <Link
-              to="/category/busos"
+              to="/category/chaquetas"
               className="block text-white hover:text-gray-300">
               Chaquetas
             </Link>
             <Link
-              to="/category/busos"
+              to="/category/perfumes"
               className="block text-white hover:text-gray-300">
               Perfumes
             </Link>
             <Link
-              to="/category/busos"
+              to="/category/bolsos"
               className="block text-white hover:text-gray-300">
               Bolsos
             </Link>
             <Link
-              to="/category/busos"
+              to="/category/relojes"
               className="block text-white hover:text-gray-300">
               Relojes
             </Link>
             <Link
-              to="/category/busos"
+              to="/category/gorras"
               className="block text-white hover:text-gray-300">
               Gorras
             </Link>
