@@ -21,42 +21,42 @@ export const Navbar = () => {
           <div className="space-x-4 flex gap-x-4">
             <div className="hidden md:flex gap-x-4 space-x-4">
               <Link
-                to="/products/tenis"
+                to="/category/tenis"
                 className="block text-white text-xl hover:text-gray-300">
-                Tenis
+                Tennis
               </Link>
               <Link
-                to="/products/camisetas"
+                to="/category/camisetas"
                 className="block text-white text-xl hover:text-gray-300">
                 Camisetas
               </Link>
               <Link
-                to="/products/busos"
+                to="/category/busos"
                 className="block text-white text-xl hover:text-gray-300">
                 Busos
               </Link>
               <Link
-                to="/products/busos"
+                to="/category/chaquetas"
                 className="block text-white text-xl hover:text-gray-300">
                 Chaquetas
               </Link>
               <Link
-                to="/products/busos"
+                to="/category/perfumes"
                 className="block text-white text-xl hover:text-gray-300">
                 Perfumes
               </Link>
               <Link
-                to="/products/busos"
+                to="/category/Bolsos"
                 className="block text-white text-xl hover:text-gray-300">
-                Jeans
+                Bolsos
               </Link>
               <Link
-                to="/products/busos"
+                to="/category/relojes"
                 className="block text-white text-xl hover:text-gray-300">
                 Relojes
               </Link>
               <Link
-                to="/products/busos"
+                to="/category/gorras"
                 className="block text-white text-xl hover:text-gray-300">
                 Gorras
               </Link>
@@ -75,42 +75,42 @@ export const Navbar = () => {
         {isMenuOpen && (
           <div className="md:hidden mt-4 space-y-4">
             <Link
-              to="/products/tenis"
+              to="/category/tenis"
               className="block text-white hover:text-gray-300">
               Tenis
             </Link>
             <Link
-              to="/products/camisetas"
+              to="/category/camisetas"
               className="block text-white hover:text-gray-300">
               Camisetas
             </Link>
             <Link
-              to="/products/busos"
+              to="/category/busos"
               className="block text-white hover:text-gray-300">
               Busos
             </Link>
             <Link
-              to="/products/busos"
+              to="/category/busos"
               className="block text-white hover:text-gray-300">
               Chaquetas
             </Link>
             <Link
-              to="/products/busos"
+              to="/category/busos"
               className="block text-white hover:text-gray-300">
               Perfumes
             </Link>
             <Link
-              to="/products/busos"
+              to="/category/busos"
               className="block text-white hover:text-gray-300">
-              Jeans
+              Bolsos
             </Link>
             <Link
-              to="/products/busos"
+              to="/category/busos"
               className="block text-white hover:text-gray-300">
               Relojes
             </Link>
             <Link
-              to="/products/busos"
+              to="/category/busos"
               className="block text-white hover:text-gray-300">
               Gorras
             </Link>

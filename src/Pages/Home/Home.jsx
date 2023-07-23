@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Navbar } from "../../Components/Navbar/Navbar";
 import { Footer } from "../../Components/Footer/Footer";
 import { ChevronRight, ChevronLeft } from "lucide-react"; // Importar los iconos de Lucide
 import { FaWhatsapp } from "react-icons/fa"; // Importar el ícono de WhatsApp de react-icons
+import { ProductContext } from "../../Context/ProductContext";
 
 export const Home = () => {
+  const { products } = useContext(ProductContext);
+  const latestProducts = products.slice(0, 4);
+
   const brands = [
     {
       name: "Monastery",
@@ -23,32 +27,7 @@ export const Home = () => {
       logo: "/ilimin-logo.webp",
     },
   ];
-  const products = [
-    {
-      name: "Gorra 1",
-      image: "/gorra1.webp",
-      brand: "Monastery",
-      price: "95.000",
-    },
-    {
-      name: "Perfume",
-      image: "/perfume1.webp",
-      brand: "AL HARAMAIR",
-      price: "95.000",
-    },
-    {
-      name: "Tennis",
-      image: "/tennis1.webp",
-      brand: "Diesel",
-      price: "95.000",
-    },
-    {
-      name: "Chaqueta",
-      image: "/chaqueta.webp",
-      brand: "Super Dry",
-      price: "95.000",
-    },
-  ];
+
   const categories = [
     {
       name: "Tenis",
@@ -101,10 +80,10 @@ export const Home = () => {
     // Agrega más categorías aquí si es necesario
   ];
   return (
-    <>
+    <div className="relative">
       <Navbar />
       <div className="bg-neutral-900 text-white">
-        <div className="container mx-auto py-5 md:py-16 px-2 md:px-0">
+        <div className="container mx-auto py-5 md:py-16 px-2 md:px-0 h-full">
           <div className="w-full">
             <h1 className="text-4xl md:text-6xl font-bold text-red-600 mb-4 text-center">
               ¡La mejor ropa de moda en Tenis Jes!
@@ -114,7 +93,7 @@ export const Home = () => {
               tenis y ropa de las mejores marcas del mercado. Somos
               distribuidores autorizados de Monastery, Diesel, New Balance e
               Ilimin. Tenemos todo lo que necesitas para lucir a la moda y estar
-              cómodo a la vez. Desde tenis deportivos hasta camisetas, jeans,
+              cómodo a la vez. Desde tenis deportivos hasta camisetas, Bolsos,
               busos, gorras, lociones, bolsos y relojes, ¡lo tenemos todo!
               Visita nuestra tienda en <strong>Manizales</strong> y descubre
               nuestros productos destacados. ¡Te esperamos!
@@ -123,14 +102,14 @@ export const Home = () => {
               {brands.map((brand) => (
                 <div
                   key={brand.name}
-                  className="bg-neutral-800 w-auto md:w-auto rounded-md flex flex-col items-center shadow-md overflow-hidden transform transition-transform hover:scale-105">
+                  className="bg-gray-300 w-auto md:w-auto rounded-md flex flex-col items-center shadow-md overflow-hidden transform transition-transform hover:scale-105">
                   <img
                     src={brand.logo}
                     alt={brand.name}
                     className="w-auto h-32 mx-auto mt-4"
                   />
                   <div className="p-4">
-                    <h3 className="text-xl font-bold text-white mb-2">
+                    <h3 className="text-xl font-bold text-black mb-2">
                       {brand.name}
                     </h3>
                   </div>
@@ -143,15 +122,15 @@ export const Home = () => {
             <h2 className="text-3xl md:text-4xl font-semibold text-white mb-6 text-center">
               Categorías
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 place-items-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 place-items-center">
               {categories.map((category, index) => (
                 <div
                   key={index}
-                  className="w-96 flex flex-col items-center bg-gradient-to-b from-neutral-950 to-red-800 rounded-lg overflow-hidden shadow-md transform transition-transform hover:scale-105">
+                  className="w-96 flex flex-col items-center bg-gradient-to-b from-neutral-950 to-red-800 rounded-lg overflow-hidden shadow-md shadow-neutral-600 group/card">
                   <img
                     src={category.image}
                     alt={category.name}
-                    className="w-max h-72 object-cover"
+                    className="w-max h-72 object-cover transform transition-transform group-hover/card:scale-110"
                   />
                   <div className="p-4">
                     <h3 className="text-xl font-semibold text-white mb-2">
@@ -159,7 +138,7 @@ export const Home = () => {
                     </h3>
                     <p className="text-gray-200">{category.description}</p>
                     <div className="mt-4">
-                      <button className="bg-neutral-800 hover:bg-neutral-700 text-white px-4 py-2 rounded-md">
+                      <button className="bg-neutral-800 hover:bg-neutral-700 text-white px-4 py-2 rounded-md group-hover/card:bg-neutral-900">
                         Ver Productos
                       </button>
                     </div>
@@ -169,15 +148,15 @@ export const Home = () => {
             </div>
           </div>
           {/* Sección destacada */}
-          <div className="mt-16">
+          <div className="mt-16 mb-[48rem] md:mb-96 lg:mb-72">
             <h2 className="text-2xl md:text-4xl font-light text-center py-4 text-white mb-4">
               ¡Lo mejor en tendencias!
             </h2>
             <div className="grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 place-content-center place-items-center w-full">
-              {products.map((product, index) => (
+              {latestProducts.map((product, index) => (
                 <div
                   key={index}
-                  className="w-96 md:w-80 lg:w-96 bg-neutral-700 rounded-lg overflow-hidden shadow-lg transform transition-transform hover:scale-105">
+                  className="w-96 md:w-80 lg:w-96 bg-neutral-700 rounded-lg overflow-hidden shadow-lg transform transition-transform hover:bg-neutral-800 hover:contrast-125">
                   <div className="card-img w-auto flex justify-center items-center">
                     <img
                       src={product.image}
@@ -216,6 +195,6 @@ export const Home = () => {
         </a>
       </div>
       <Footer />
-    </>
+    </div>
   );
 };

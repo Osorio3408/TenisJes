@@ -13,7 +13,7 @@ export const NotFound = () => {
       </Link>
       <div className="mt-8">
         <img
-          src="LogoDark1.webp" // Ruta a tu logo blanco (reemplaza con tu logo)
+          src="/LogoDark1.webp" // Ruta a tu logo blanco (reemplaza con tu logo)
           alt="Logo TenisJes"
           className="w-32 h-32"
         />
