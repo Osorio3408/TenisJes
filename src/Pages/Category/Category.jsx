@@ -1,14 +1,15 @@
 import React, { useContext, useState } from "react";
 import { Navbar } from "../../Components/Navbar/Navbar";
 import { Footer } from "../../Components/Footer/Footer";
-import { FaWhatsapp } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { ProductContext } from "../../Context/ProductContext";
 import { useParams } from "react-router-dom";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import numeral from "numeral";
 import "numeral/locales/es"; // Importar el idioma español para todos los países
-import { Eye } from "lucide-react";
+import { ArrowUp, Eye } from "lucide-react";
+import { SocialNetworks } from "../../Components/SocialNetworks/SocialNetworks";
 
 // Configurar el idioma de numeral para español
 numeral.locale("es");
@@ -33,14 +34,23 @@ const Category = () => {
   };
 
   // Filtrar productos por precio (usamos el array para el rango)
-  const handlePriceFilter = (value) => {
-    // Multiplicar los valores por 1000 para representar en pesos colombianos
-    setFilterPrice([value[0] * 1000, value[1] * 1000]);
-  };
 
+  const handlePriceFilter = (values) => {
+    setFilterPrice([values[0], values[1]]);
+  };
   // Filtrar productos por nombre
   const handleNameFilter = (e) => {
     setFilterName(e.target.value);
+  };
+
+  const handleMinPriceChange = (event) => {
+    const newMinPrice = parseInt(event.target.value.replace(/\D/g, ""));
+    setFilterPrice([newMinPrice, filterPrice[1]]);
+  };
+
+  const handleMaxPriceChange = (event) => {
+    const newMaxPrice = parseInt(event.target.value.replace(/\D/g, ""));
+    setFilterPrice([filterPrice[0], newMaxPrice]);
   };
 
   // Aplicar los filtros
@@ -64,7 +74,7 @@ const Category = () => {
           {/* Filtros en la barra lateral */}
           <div className="w-full md:w-[20%] pb-10 md:pr-4 mb-4 md:mb-96">
             <div className="bg-neutral-800 text-white px-4 py-10 rounded-md">
-              <h3 className="text-xl font-semibold mb-4">Filtrar por:</h3>
+              <h3 className="text-xl font-semibold mb-4">Filtro:</h3>
               <form className="flex flex-col gap-4">
                 <div className="flex flex-col gap-2">
                   <label className="text-white">Marca:</label>
@@ -80,18 +90,46 @@ const Category = () => {
                 <div className="flex flex-col gap-2">
                   <label className="text-white">Precio:</label>
                   <div className="flex items-center gap-4">
-                    <span>{numeral(filterPrice[0]).format("$0,0")}</span>
+                    {/* Div para el valor mínimo */}
+                    <div className="w-2/5">
+                      <label htmlFor="min" className="text-white">
+                        MIN
+                      </label>
+                      <input
+                        id="min"
+                        type="text"
+                        className="w-full py-1 text-gray-200 text-center bg-transparent font-semibold text-lg border-b border-gray-300 focus:outline-none focus:border-blue-500"
+                        value={filterPrice[0]}
+                        onChange={handleMinPriceChange}
+                      />
+                    </div>
+
+                    {/* Separador */}
                     <span className="text-white">-</span>
-                    <span>{numeral(filterPrice[1]).format("$0,0")}</span>
+
+                    {/* Div para el valor máximo */}
+                    <div className="w-2/5">
+                      <label htmlFor="max" className="text-white">
+                        MAX
+                      </label>
+                      <input
+                        id="max"
+                        type="text"
+                        className="w-full py-1 text-gray-200 text-center bg-transparent font-semibold text-lg border-b border-gray-300 focus:outline-none focus:border-blue-500"
+                        value={filterPrice[1]}
+                        onChange={handleMaxPriceChange}
+                      />
+                    </div>
                   </div>
+
                   <Slider
                     className="w-full px-2"
                     range
-                    value={[filterPrice[0] / 1000, filterPrice[1] / 1000]} // Dividir los valores por 1000 para mostrar en el Slider
+                    value={filterPrice}
                     onChange={handlePriceFilter}
                     min={0}
-                    max={5000} // Cambiar el valor máximo a 10000 para representar el rango de 0 a 10.000
-                    allowCross={false} // Asegura que los cursores no se crucen
+                    max={5000000}
+                    allowCross={false}
                   />
                 </div>
               </form>
@@ -133,16 +171,8 @@ const Category = () => {
           </div>
         </div>
       </div>
-      <div className="fixed bottom-8 right-8 animate-pulse z-50">
-        <a
-          href="https://api.whatsapp.com/send?phone=3137352822"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center bg-green-500 hover:bg-green-600 p-4 rounded-full shadow-md transition-transform transform hover:scale-110 animated infinite pulse">
-          <FaWhatsapp size={24} className="text-white mr-2" />
-          <span className="text-white font-medium">WhatsApp</span>
-        </a>
-      </div>
+
+      <SocialNetworks />
       <Footer />
     </div>
   );

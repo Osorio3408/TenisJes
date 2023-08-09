@@ -4,6 +4,7 @@ import { Footer } from "../../Components/Footer/Footer";
 import { ChevronRight, ChevronLeft } from "lucide-react"; // Importar los iconos de Lucide
 import { FaWhatsapp } from "react-icons/fa"; // Importar el ícono de WhatsApp de react-icons
 import { ProductContext } from "../../Context/ProductContext";
+import { SocialNetworks } from "../../Components/SocialNetworks/SocialNetworks";
 
 export const Home = () => {
   const { products } = useContext(ProductContext);
@@ -84,42 +85,68 @@ export const Home = () => {
       <Navbar />
       <div className="bg-neutral-900 text-white">
         <div className="container mx-auto py-5 md:py-16 px-2 md:px-0 h-full">
-          <div className="w-full">
-            <h1 className="text-4xl md:text-6xl font-bold text-red-600 mb-4 text-center">
-              ¡La mejor ropa de moda en Tenis Jes!
-            </h1>
-            <p className="text-lg md:text-xl text-gray-300 mb-8  text-justify">
-              En <strong>Tenis Jes</strong>, encontrarás una amplia selección de
-              tenis y ropa de las mejores marcas del mercado. Somos
-              distribuidores autorizados de Monastery, Diesel, New Balance e
-              Ilimin. Tenemos todo lo que necesitas para lucir a la moda y estar
-              cómodo a la vez. Desde tenis deportivos hasta camisetas, Bolsos,
-              busos, gorras, lociones, bolsos y relojes, ¡lo tenemos todo!
-              Visita nuestra tienda en <strong>Manizales</strong> y descubre
-              nuestros productos destacados. ¡Te esperamos!
-            </p>
-            <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-8 place-content-center w-full">
-              {brands.map((brand) => (
-                <div
-                  key={brand.name}
-                  className="bg-gray-300 w-auto md:w-auto rounded-md flex flex-col items-center shadow-md overflow-hidden transform transition-transform hover:scale-105">
-                  <img
-                    src={brand.logo}
-                    alt={brand.name}
-                    className="w-auto h-32 mx-auto mt-4"
-                  />
-                  <div className="p-4">
-                    <h3 className="text-xl font-bold text-black mb-2">
-                      {brand.name}
-                    </h3>
+          <div className="w-full flex flex-col gap-16 mb-16">
+            <div className="text-center flex flex-col justify-start items-start">
+              <h1 className="text-4xl md:text-6xl font-bold text-red-600 mb-4 text-center">
+                ¡La mejor ropa de moda en Tenis Jes!
+              </h1>
+              <p className="text-lg md:text-xl text-gray-300 mb-8  text-justify max-w-7xl">
+                En <strong>Tenis Jes</strong>, encontrarás una amplia selección
+                de tenis y ropa de las mejores marcas del mercado. Somos
+                distribuidores autorizados de Monastery, Diesel, New Balance e
+                Ilimin. Tenemos todo lo que necesitas para lucir a la moda y
+                estar cómodo a la vez. Desde tenis deportivos hasta camisetas,
+                Bolsos, busos, gorras, lociones, bolsos y relojes, ¡lo tenemos
+                todo! Visita nuestra tienda en <strong>Manizales</strong> y
+                descubre nuestros productos destacados. ¡Te esperamos!
+              </p>
+            </div>
+            {/* Banner */}
+            <div className="bg-neutral-950 text-white py-8 text-center flex flex-col gap-3 justify-center items-center">
+              <h2 className="text-3xl md:text-4xl font-semibold mb-4">
+                ¡Programa tu visita en Tenis Jes!
+              </h2>
+              <p className="text-lg md:text-xl text-gray-300 mb-6">
+                Para garantizar tu seguridad y brindarte una atención
+                personalizada, te recomendamos agendar una cita antes de tu
+                visita. ¡Estamos aquí para ayudarte!
+              </p>
+              <a
+                href="https://api.whatsapp.com/send?phone=3137352822&text=Hola%20Tenis%20Jes,%20me%20gustaría%20agendar%20una%20cita%20para%20visitar%20su%20tienda.%20¿Podrían%20indicarme%20disponibilidad%20para%20la%20semana%20próxima?%20Quisiera%20saber%20si%20tienen%20disponible%20el%20día%20[Inserta%20día]%20a%20las%20[Inserta%20hora].%20Agradezco%20su%20atención%20y%20quedo%20pendiente%20de%20su%20respuesta.%20Saludos!"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-red-600 w-max text-white text-lg py-3 px-6 rounded-lg font-semibold hover:bg-red-700 transition-colors duration-300">
+                ¡ Agendar una cita !
+              </a>
+            </div>
+            {/* Marcas de distribución autorizado */}
+            <div className="flex flex-col gap-4">
+              <h2 className="text-center text-4xl font-mono font-semibold">
+                Marcas autorizadas
+              </h2>
+              <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-8 place-content-center w-full">
+                {brands.map((brand) => (
+                  <div
+                    key={brand.name}
+                    className="bg-gray-200 w-auto md:w-auto rounded-md flex flex-col items-center shadow-md overflow-hidden transform transition-transform hover:scale-105">
+                    <img
+                      src={brand.logo}
+                      alt={brand.name}
+                      className="w-auto h-32 mx-auto mt-4"
+                    />
+                    <div className="p-4">
+                      <h3 className="text-xl font-bold text-black mb-2">
+                        {brand.name}
+                      </h3>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
           {/*Seccion de categorias */}
           <div className="container mx-auto px-4 py-12">
-            <h2 className="text-3xl md:text-4xl font-semibold text-white mb-6 text-center">
+            <h2 className="text-3xl md:text-4xl font-medium text-white mb-6 text-center font-mono">
               Categorías
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 place-items-center">
@@ -184,16 +211,7 @@ export const Home = () => {
           </div>
         </div>
       </div>
-      <div className="fixed bottom-8 right-8 animate-pulse z-50">
-        <a
-          href="https://api.whatsapp.com/send?phone=3137352822"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center bg-green-500 hover:bg-green-600 p-4 rounded-full shadow-md transition-transform transform hover:scale-110 animated infinite pulse">
-          <FaWhatsapp size={24} className="text-white mr-2" />
-          <span className="text-white font-medium">WhatsApp</span>
-        </a>
-      </div>
+      <SocialNetworks />
       <Footer />
     </div>
   );
