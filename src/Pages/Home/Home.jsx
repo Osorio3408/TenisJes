@@ -88,7 +88,7 @@ export const Home = () => {
           <div className="w-full flex flex-col gap-16 mb-16">
             <div className="text-center flex flex-col justify-start items-start">
               <h1 className="text-4xl md:text-6xl font-bold text-red-600 mb-4 text-center">
-                ¡La mejor ropa de moda en Tenis Jes!
+                ¡Tienda de Tenis y Ropa en Manizales - Tenis Jes!
               </h1>
               <p className="text-lg md:text-xl text-gray-300 mb-8  text-justify max-w-7xl">
                 En <strong>Tenis Jes</strong>, encontrarás una amplia selección
