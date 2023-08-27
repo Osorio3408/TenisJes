@@ -11,6 +11,10 @@ export const SocialNetworks = () => {
   return (
     <div className="fixed bottom-8 right-8 z-50">
       <button
+        id="RedesSociales"
+        aria-label="redesSociales"
+        aria-labelledby="redesSociales"
+        title="redesSociale"
         onClick={toggleSocialButtons}
         className="bg-neutral-950 hover:bg-neutral-700 p-4 rounded-full shadow-md transition-transform transform hover:scale-110 focus:outline-none ">
         <Share2 size={24} className="text-white " />

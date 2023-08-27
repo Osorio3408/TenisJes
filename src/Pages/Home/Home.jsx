@@ -5,6 +5,7 @@ import { ChevronRight, ChevronLeft } from "lucide-react"; // Importar los iconos
 import { FaWhatsapp } from "react-icons/fa"; // Importar el ícono de WhatsApp de react-icons
 import { ProductContext } from "../../Context/ProductContext";
 import { SocialNetworks } from "../../Components/SocialNetworks/SocialNetworks";
+import { Link } from "react-router-dom";
 
 export const Home = () => {
   const { products } = useContext(ProductContext);
@@ -90,7 +91,7 @@ export const Home = () => {
               <h1 className="text-4xl md:text-6xl font-bold text-red-600 mb-4 text-center">
                 ¡Tienda de Tenis y Ropa en Manizales - Tenis Jes!
               </h1>
-              <p className="text-lg md:text-xl text-gray-300 mb-8  text-justify max-w-7xl">
+              <p className="text-lg md:text-xl text-gray-300 mb-8 text-left max-w-[85rem] w-full">
                 En <strong>Tenis Jes</strong>, encontrarás una amplia selección
                 de tenis y ropa de las mejores marcas del mercado. Somos
                 distribuidores autorizados de Monastery, Diesel, New Balance e
@@ -115,7 +116,7 @@ export const Home = () => {
                 href="https://api.whatsapp.com/send?phone=3137352822&text=Hola%20Tenis%20Jes,%20me%20gustaría%20agendar%20una%20cita%20para%20visitar%20su%20tienda.%20¿Podrían%20indicarme%20disponibilidad%20para%20la%20semana%20próxima?%20Quisiera%20saber%20si%20tienen%20disponible%20el%20día%20[Inserta%20día]%20a%20las%20[Inserta%20hora].%20Agradezco%20su%20atención%20y%20quedo%20pendiente%20de%20su%20respuesta.%20Saludos!"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-red-600 w-max text-white text-lg py-3 px-6 rounded-lg font-semibold hover:bg-red-700 transition-colors duration-300">
+                className="bg-red-600 w-max text-white text-lg py-3 px-6 rounded-lg font-semibold hover:bg-red-700 hover:outline hover:outline-offset-4 transition-colors duration-300">
                 ¡ Agendar una cita !
               </a>
             </div>
@@ -130,6 +131,7 @@ export const Home = () => {
                     key={brand.name}
                     className="bg-gray-200 w-auto md:w-auto rounded-md flex flex-col items-center shadow-md overflow-hidden transform transition-transform hover:scale-105">
                     <img
+                      title={brand.name}
                       src={brand.logo}
                       alt={brand.name}
                       className="w-auto h-32 mx-auto mt-4"
@@ -149,12 +151,13 @@ export const Home = () => {
             <h2 className="text-3xl md:text-4xl font-medium text-white mb-6 text-center font-mono">
               Categorías
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 place-items-center">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 place-items-center">
               {categories.map((category, index) => (
                 <div
                   key={index}
-                  className="w-96 flex flex-col items-center bg-gradient-to-b from-neutral-950 to-red-800 rounded-lg overflow-hidden shadow-md shadow-neutral-600 group/card">
+                  className="max-w-lg w-full flex flex-col items-center bg-gradient-to-b from-neutral-950 to-red-800 rounded-lg overflow-hidden shadow-md shadow-neutral-600 group/card">
                   <img
+                    title={category.name}
                     src={category.image}
                     alt={category.name}
                     className="w-max h-72 object-cover transform transition-transform group-hover/card:scale-110"
@@ -165,9 +168,12 @@ export const Home = () => {
                     </h3>
                     <p className="text-gray-200">{category.description}</p>
                     <div className="mt-4">
-                      <button className="bg-neutral-800 hover:bg-neutral-700 text-white px-4 py-2 rounded-md group-hover/card:bg-neutral-900">
+                      <Link
+                        title={category.name}
+                        to={`/category/${category.name}`}
+                        className="bg-neutral-800 hover:bg-neutral-700 text-white px-4 py-2 rounded-md group-hover/card:bg-neutral-900">
                         Ver Productos
-                      </button>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -179,13 +185,14 @@ export const Home = () => {
             <h2 className="text-2xl md:text-4xl font-light text-center py-4 text-white mb-4">
               ¡Lo mejor en tendencias!
             </h2>
-            <div className="grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 place-content-center place-items-center w-full">
+            <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 place-content-center place-items-center w-full">
               {latestProducts.map((product, index) => (
                 <div
                   key={index}
-                  className="w-96 md:w-80 lg:w-96 bg-neutral-700 rounded-lg overflow-hidden shadow-lg transform transition-transform hover:bg-neutral-800 hover:contrast-125">
+                  className="max-w-lg w-full bg-neutral-700 rounded-lg overflow-hidden shadow-lg transform transition-transform hover:bg-neutral-800 hover:contrast-125">
                   <div className="card-img w-auto flex justify-center items-center">
                     <img
+                      title={product.name}
                       src={product.image}
                       alt={product.name}
                       width={100}

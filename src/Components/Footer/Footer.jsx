@@ -1,13 +1,14 @@
 import React from "react";
 import { Facebook, Instagram, Mail, MapPin, Smartphone } from "lucide-react"; // Importar los iconos de Lucide
 import { Link } from "react-router-dom";
+import { FaWhatsapp } from "react-icons/fa";
 
 export const Footer = () => {
   return (
     <footer className="bg-neutral-950 text-white py-6 w-full absolute bottom-0">
       <div className="container mx-auto px-4 md:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-10  md:gap-y-4 ">
-          <div>
+          <div className="space-y-3">
             <h3 className="text-xl font-bold mb-4">Contacto</h3>
             <p className="text-gray-300 text-sm flex items-center gap-x-2">
               <Mail size={14} className="text-red-400" /> Email:
@@ -106,6 +107,14 @@ export const Footer = () => {
                 target="_blank"
                 className="text-gray-300 hover:text-white transition-colors duration-300">
                 <Instagram size={20} /> {/* Icono de Instagram de Lucide */}
+              </a>
+              <a
+                href="https://api.whatsapp.com/send?phone=3137352822"
+                title="WhatsApp"
+                target="_blank"
+                className="text-gray-300 hover:text-white transition-colors duration-300">
+                <FaWhatsapp size={20} />{" "}
+                {/* Icono de Instagram de React Icons */}
               </a>
             </div>
           </div>

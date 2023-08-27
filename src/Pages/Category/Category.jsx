@@ -19,7 +19,7 @@ const Category = () => {
   const { category } = useParams();
 
   // Estado para los filtros
-  const [filterBrand, setFilterBrand] = useState("");
+  const [filterBrands, setFilterBrands] = useState([]); // Usamos un array para las marcas seleccionadas
   const [filterPrice, setFilterPrice] = useState([0, 5000000]); // Usaremos un array para el rango de precio
   const [filterName, setFilterName] = useState("");
 
@@ -28,10 +28,25 @@ const Category = () => {
     (product) => product.category.toLowerCase() === category.toLowerCase()
   );
 
+  // Lista de marcas únicas
+  const uniqueBrands = [
+    ...new Set(categoryProducts.map((product) => product.brand)),
+  ];
+
   // Filtrar productos por marca
-  const handleBrandFilter = (e) => {
-    setFilterBrand(e.target.value);
+  const handleBrandFilter = (brand) => {
+    if (filterBrands.includes(brand)) {
+      setFilterBrands(filterBrands.filter((item) => item !== brand));
+    } else {
+      setFilterBrands([...filterBrands, brand]);
+    }
+    console.log(filterBrands); // Agrega este console.log para verificar el estado
   };
+
+  // Filtrar productos por marca
+  // const handleBrandFilter = (e) => {
+  //   setFilterBrand(e.target.value);
+  // };
 
   // Filtrar productos por precio (usamos el array para el rango)
 
@@ -56,8 +71,7 @@ const Category = () => {
   // Aplicar los filtros
   const filteredProducts = categoryProducts.filter((product) => {
     const brandMatch =
-      filterBrand === "" ||
-      product.brand.toLowerCase().includes(filterBrand.toLowerCase());
+      filterBrands.length === 0 || filterBrands.includes(product.brand);
     const priceMatch =
       product.price >= filterPrice[0] && product.price <= filterPrice[1];
     const nameMatch =
@@ -69,26 +83,32 @@ const Category = () => {
   return (
     <div className="relative">
       <Navbar />
-      <div className="bg-neutral-900">
+      <div className="bg-neutral-900 min-h-screen">
         <div className="container mx-auto py-5 md:py-16 px-2 md:px-0 flex flex-col md:flex-row xl:gap-x-4 h-full">
           {/* Filtros en la barra lateral */}
           <div className="w-full md:w-[20%] pb-10 md:pr-4 mb-4 md:mb-96">
             <div className="bg-neutral-800 text-white px-4 py-10 rounded-md">
-              <h3 className="text-xl font-semibold mb-4">Filtro:</h3>
-              <form className="flex flex-col gap-4">
-                <div className="flex flex-col gap-2">
-                  <label className="text-white">Marca:</label>
-                  <input
-                    type="text"
-                    placeholder="Marca"
-                    value={filterBrand}
-                    onChange={handleBrandFilter}
-                    className="bg-transparent text-white px-4 py-2 rounded-md focus:outline-none border-b"
-                  />
+              <form className="flex flex-col gap-y-10">
+                <div className="flex flex-col gap-y-5">
+                  <label className="text-white text-2xl">Marca:</label>
+                  <div className="grid gap-y-2 grid-cols-2 md:grid-cols-1 lg:grid-cols-2 max-w-xl">
+                    {uniqueBrands.map((brand, index) => (
+                      <label key={index} className="flex items-center gap-2">
+                        <input
+                          type="checkbox"
+                          value={brand}
+                          checked={filterBrands.includes(brand)}
+                          onChange={() => handleBrandFilter(brand)}
+                          className="form-checkbox"
+                        />
+                        <span className="text-white">{brand}</span>
+                      </label>
+                    ))}
+                  </div>
                 </div>
                 {/* Filtrador de rango de precio */}
-                <div className="flex flex-col gap-2">
-                  <label className="text-white">Precio:</label>
+                <div className="flex flex-col gap-y-5">
+                  <label className="text-white text-2xl">Precio:</label>
                   <div className="flex items-center gap-4">
                     {/* Div para el valor mínimo */}
                     <div className="w-2/5">
@@ -99,7 +119,7 @@ const Category = () => {
                         id="min"
                         type="text"
                         className="w-full py-1 text-gray-200 text-center bg-transparent font-semibold text-lg border-b border-gray-300 focus:outline-none focus:border-blue-500"
-                        value={filterPrice[0]}
+                        value={`$ ${filterPrice[0]}`}
                         onChange={handleMinPriceChange}
                       />
                     </div>
@@ -116,14 +136,13 @@ const Category = () => {
                         id="max"
                         type="text"
                         className="w-full py-1 text-gray-200 text-center bg-transparent font-semibold text-lg border-b border-gray-300 focus:outline-none focus:border-blue-500"
-                        value={filterPrice[1]}
+                        value={`$ ${filterPrice[1]}`}
                         onChange={handleMaxPriceChange}
                       />
                     </div>
                   </div>
-
                   <Slider
-                    className="w-full px-2"
+                    className="w-full px-2 "
                     range
                     value={filterPrice}
                     onChange={handlePriceFilter}
@@ -137,11 +156,11 @@ const Category = () => {
           </div>
 
           {/* Lista de productos */}
-          <div className="w-full h-full md:w-3/4 grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-10 gap-y-5 place-content-center place-items-center mb-[46rem] md:mb-[22.6rem]">
+          <div className="w-full h-full md:w-3/4 grid-cols-2 grid sm:grid-cols-3 md:grid-cols-3 xl:grid-cols-4 gap-x-5 gap-y-5 place-content-center place-items-center mb-[46rem] md:mb-[22.6rem]">
             {filteredProducts.map((product, index) => (
               <div
                 key={index}
-                className="w-72 md:w-80 lg:w-80 bg-neutral-700 rounded-lg overflow-hidden shadow-lg transform transition-transform hover:scale-105">
+                className="max-w-xl w-full bg-neutral-700 rounded-lg overflow-hidden shadow-lg transform transition-transform hover:scale-105">
                 <div className="card-img w-auto flex justify-center items-center py-4">
                   <img
                     src={product.image}
@@ -157,12 +176,9 @@ const Category = () => {
                   </h3>
                   <p className="text-gray-300">{product.brand}</p>
                   <hr className="my-3" />
-                  <div className="flex justify-between items-center text-gray-200">
-                    <div className="card-price">
+                  <div className="flex justify-center items-center text-gray-50">
+                    <div className="text-center">
                       ${numeral(product.price).format("0,0")}
-                    </div>
-                    <div className="py-1 w-16 flex items-center justify-center border rounded-md hover:bg-black">
-                      <Eye />
                     </div>
                   </div>
                 </div>

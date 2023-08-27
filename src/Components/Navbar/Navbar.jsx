@@ -11,11 +11,14 @@ export const Navbar = () => {
 
   return (
     <nav className="bg-gradient-to-r from-neutral-950 to-neutral-900 py-4">
-      <div className="container mx-auto px-4 md:px-8">
-        <div className="flex items-center justify-between">
-          <div>
-            <Link to="/" className="text-white font-bold text-5xl flex">
-              TENIS <p className="text-red-600 font-extrabold">JES</p>
+      <div className="container mx-auto px-4 md:px-0">
+        <div className="flex items-center justify-between py-3">
+          <div className="flex items-center">
+            <Link
+              to="/"
+              className="text-white font-bold text-3xl flex items-center">
+              <span className="text-red-600 mr-1">TENIS</span>
+              <span className="text-white font-extrabold">JES</span>
             </Link>
           </div>
           <div className="space-x-4 flex gap-x-4">
@@ -64,6 +67,10 @@ export const Navbar = () => {
             <div className="relative inline-block text-left">
               {/* Ajustamos el atributo "hidden" en función de la resolución */}
               <button
+                id="menu"
+                aria-label="menu"
+                aria-braillelabel="menu"
+                title="menu"
                 onClick={toggleMenu}
                 className={`text-white focus:outline-none md:hidden block`}>
                 {isMenuOpen ? <X size={24} /> : <Menu size={24} />}{" "}
