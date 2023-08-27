@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Navbar } from "../../Components/Navbar/Navbar";
 import { Footer } from "../../Components/Footer/Footer";
 import { FaFacebook, FaInstagram, FaWhatsapp } from "react-icons/fa";
@@ -27,6 +27,18 @@ const Category = () => {
   const categoryProducts = products.filter(
     (product) => product.category.toLowerCase() === category.toLowerCase()
   );
+
+  // Limpiar los filtros al cambiar de categoría
+  // Scroll a la parte superior cuando cambie la categoría
+  useEffect(() => {
+    // Mover la ventana hasta la parte superior de la página
+    window.scrollTo({ top: 0, behavior: "smooth" });
+
+    // Limpiar los filtros al cambiar de categoría
+    setFilterBrands([]);
+    setFilterPrice([0, 5000000]);
+    setFilterName("");
+  }, [category]); // Se ejecutará cada vez que cambie 'category'
 
   // Lista de marcas únicas
   const uniqueBrands = [
@@ -79,6 +91,11 @@ const Category = () => {
       product.name.toLowerCase().includes(filterName.toLowerCase());
     return brandMatch && priceMatch && nameMatch;
   });
+
+  // Aplicar los filtros y ordenar productos por precio mayor
+  const sortedAndFilteredProducts = filteredProducts
+    .slice() // Crear una copia para no modificar el arreglo original
+    .sort((a, b) => b.price - a.price); // Ordenar por precio mayor a menor
 
   return (
     <div className="relative">
@@ -157,7 +174,7 @@ const Category = () => {
 
           {/* Lista de productos */}
           <div className="w-full h-full md:w-3/4 grid-cols-2 grid sm:grid-cols-3 md:grid-cols-3 xl:grid-cols-4 gap-x-5 gap-y-5 place-content-center place-items-center mb-[46rem] md:mb-[22.6rem]">
-            {filteredProducts.map((product, index) => (
+            {sortedAndFilteredProducts.map((product, index) => (
               <div
                 key={index}
                 className="max-w-xl w-full bg-neutral-700 rounded-lg overflow-hidden shadow-lg transform transition-transform hover:scale-105">
