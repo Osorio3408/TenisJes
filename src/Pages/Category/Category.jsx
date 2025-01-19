@@ -124,10 +124,11 @@ const Category = () => {
                   </div>
                 </div>
                 {/* Filtrador de rango de precio */}
+{/*
                 <div className="flex flex-col gap-y-5">
                   <label className="text-white text-2xl">Precio:</label>
                   <div className="flex items-center gap-4">
-                    {/* Div para el valor mínimo */}
+                    
                     <div className="w-2/5">
                       <label htmlFor="min" className="text-white">
                         MIN
@@ -141,10 +142,9 @@ const Category = () => {
                       />
                     </div>
 
-                    {/* Separador */}
+                   
                     <span className="text-white">-</span>
 
-                    {/* Div para el valor máximo */}
                     <div className="w-2/5">
                       <label htmlFor="max" className="text-white">
                         MAX
@@ -168,6 +168,8 @@ const Category = () => {
                     allowCross={false}
                   />
                 </div>
+
+ */}
               </form>
             </div>
           </div>
@@ -192,11 +194,11 @@ const Category = () => {
                     {product.name}
                   </h3>
                   <p className="text-gray-300">{product.brand}</p>
-                  <hr className="my-3" />
+
                   <div className="flex justify-center items-center text-gray-50">
-                    <div className="text-center">
-                      ${numeral(product.price).format("0,0")}
-                    </div>
+{/*                      <div className="text-center">
+                      ${numeral(product.price ).format("0,0")}
+                    </div>*/}
                   </div>
                 </div>
               </div>

@@ -91,7 +91,7 @@ export const Home = () => {
               <h1 className="text-4xl md:text-6xl font-bold text-red-600 mb-4 text-center">
                 ¡Tienda de Tenis y Ropa en Manizales - Tenis Jes!
               </h1>
-              <p className="text-lg md:text-xl text-gray-300 mb-8 text-left max-w-[85rem] w-full">
+              <p className="text-lg md:text-xl text-gray-300 mb-8 text-center max-w-[85rem] w-full">
                 En <strong>Tenis Jes</strong>, encontrarás una amplia selección
                 de tenis y ropa de las mejores marcas del mercado. Somos
                 distribuidores autorizados de Monastery, Diesel, New Balance e
@@ -102,12 +102,29 @@ export const Home = () => {
                 descubre nuestros productos destacados. ¡Te esperamos!
               </p>
             </div>
+            <div className="w-full mb-16 flex justify-center items-center">
+  <img
+    src="/tienda.avif"
+    alt="Tienda Tenis Jes"
+    className="w-full max-w-7xl h-auto object-cover rounded-lg shadow-lg opacity-90"
+  />
+</div>
             {/* Banner */}
-            <div className="bg-neutral-950 text-white py-8 text-center flex flex-col gap-3 justify-center items-center">
-              <h2 className="text-3xl md:text-4xl font-semibold mb-4">
+            <div
+              className="bg-neutral-950 text-white py-20 text-center flex flex-col gap-4 justify-center items-center"
+              style={{
+                backgroundImage: 'url("brand.webp")',
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+                backgroundColor: "rgba(0, 0, 0, 0.7)", // Fondo oscuro semitransparente
+                backgroundBlendMode: "overlay", // Mezclar imagen y color de fondo
+              }}
+            >
+              <h2 className="text-3xl md:text-4xl font-semibold mb-6">
                 ¡Programa tu visita en Tenis Jes!
               </h2>
-              <p className="text-lg md:text-xl text-gray-300 mb-6">
+              <p className="text-lg md:text-xl text-gray-300 mb-4 lg:w-[900px] text-white">
                 Para garantizar tu seguridad y brindarte una atención
                 personalizada, te recomendamos agendar una cita antes de tu
                 visita. ¡Estamos aquí para ayudarte!
@@ -116,10 +133,12 @@ export const Home = () => {
                 href="https://api.whatsapp.com/send?phone=3137352822&text=Hola%20Tenis%20Jes,%20me%20gustaría%20agendar%20una%20cita%20para%20visitar%20su%20tienda.%20¿Podrían%20indicarme%20disponibilidad%20para%20la%20semana%20próxima?%20Quisiera%20saber%20si%20tienen%20disponible%20el%20día%20[Inserta%20día]%20a%20las%20[Inserta%20hora].%20Agradezco%20su%20atención%20y%20quedo%20pendiente%20de%20su%20respuesta.%20Saludos!"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-red-600 w-max text-white text-lg py-3 px-6 rounded-lg font-semibold hover:bg-red-700 hover:outline hover:outline-offset-4 transition-colors duration-300">
+                className="bg-red-600 w-max text-white text-lg py-4 px-8 rounded-lg font-semibold hover:bg-red-700 transition-all duration-300 mt-10 md:mt-14"
+              >
                 ¡ Agendar una cita !
               </a>
             </div>
+
             {/* Marcas de distribución autorizado */}
             <div className="flex flex-col gap-4">
               <h2 className="text-center text-4xl font-mono font-semibold">
@@ -129,7 +148,8 @@ export const Home = () => {
                 {brands.map((brand) => (
                   <div
                     key={brand.name}
-                    className="bg-gray-200 w-auto md:w-auto rounded-md flex flex-col items-center shadow-md overflow-hidden transform transition-transform hover:scale-105">
+                    className="bg-gray-200 w-auto md:w-auto rounded-md flex flex-col items-center shadow-md overflow-hidden transform transition-transform hover:scale-105"
+                  >
                     <img
                       title={brand.name}
                       src={brand.logo}
@@ -155,7 +175,8 @@ export const Home = () => {
               {categories.map((category, index) => (
                 <div
                   key={index}
-                  className="max-w-lg w-full flex flex-col items-center bg-gradient-to-b from-neutral-950 to-red-800 rounded-lg overflow-hidden shadow-md shadow-neutral-600 group/card">
+                  className="max-w-lg w-full flex flex-col items-center bg-gradient-to-b from-neutral-950 to-red-800 rounded-lg overflow-hidden shadow-md shadow-neutral-600 group/card"
+                >
                   <img
                     title={category.name}
                     src={category.image}
@@ -171,7 +192,8 @@ export const Home = () => {
                       <Link
                         title={category.name}
                         to={`/category/${category.name}`}
-                        className="bg-neutral-800 hover:bg-neutral-700 text-white px-4 py-2 rounded-md group-hover/card:bg-neutral-900">
+                        className="bg-neutral-800 hover:bg-neutral-700 text-white px-4 py-2 rounded-md group-hover/card:bg-neutral-900"
+                      >
                         Ver Productos
                       </Link>
                     </div>
@@ -181,7 +203,7 @@ export const Home = () => {
             </div>
           </div>
           {/* Sección destacada */}
-          <div className="mt-16 mb-[48rem] md:mb-96 lg:mb-72">
+          <div className="mt-40 mb-[57rem] md:mb-96 lg:mb-72">
             <h2 className="text-2xl md:text-4xl font-light text-center py-4 text-white mb-4">
               ¡Lo mejor en tendencias!
             </h2>
@@ -189,7 +211,8 @@ export const Home = () => {
               {latestProducts.map((product, index) => (
                 <div
                   key={index}
-                  className="max-w-lg w-full bg-neutral-700 rounded-lg overflow-hidden shadow-lg transform transition-transform hover:bg-neutral-800 hover:contrast-125">
+                  className="max-w-lg w-full bg-neutral-700 rounded-lg overflow-hidden shadow-lg transform transition-transform hover:bg-neutral-800 hover:contrast-125"
+                >
                   <div className="card-img w-auto flex justify-center items-center">
                     <img
                       title={product.name}
@@ -205,17 +228,19 @@ export const Home = () => {
                       {product.name}
                     </h3>
                     <p className="text-gray-300">{product.brand}</p>
-                    <hr className="my-3" />
+                    {/*  <hr className="my-3" />
                     <div className="card-footer">
-                      <div className="card-price">
+                       <div className="card-price">
                         <span>$</span> {product.price}
-                      </div>
-                    </div>
+                      </div> 
+                    </div>*/}
                   </div>
                 </div>
               ))}
             </div>
           </div>
+
+
         </div>
       </div>
       <SocialNetworks />
